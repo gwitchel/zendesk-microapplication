@@ -42,14 +42,14 @@ const Mongourl = 'mongodb://localhost:27017/testDB';
 // Database Name
 const dbName = 'testDB';
 
-(async () => {
-//console.log(await getIssues.getIssueInfo('VRSCRUM-2'));
-var projects = await getIssuesList.getProjectList();
-console.log(projects);
-var issues = await getIssues.getIssueInfo(projects[0].id);
-console.log(issues);
-//console.log(await getIssues.getIssueInfo('VRSCRUM-3'));
-})();
+// (async () => {
+// //console.log(await getIssues.getIssueInfo('VRSCRUM-2'));
+// var projects = await getIssuesList.getProjectList();
+// console.log(projects);
+// var issues = await getIssues.getIssueInfo(projects[0].id);
+// console.log(issues);
+// //console.log(await getIssues.getIssueInfo('VRSCRUM-3'));
+// })();
 
 // MongoClient.connect(Mongourl,{ useNewUrlParser: true }, function(err, client) {
 //    assert.equal(null, err);
