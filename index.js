@@ -14,13 +14,12 @@ const server = restify.createServer({
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
- //server.use(restify.CORS());
-//.use(restify.fullResponse());
+
 
 server.get('/projects', function (req, res, next) {
     (async () => {
         var projects = await getIssuesList.getProjectList();
-        res.send(projects)
+        res.send({"projects" : projects})
         return next();
     })();
 });
