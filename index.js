@@ -14,7 +14,9 @@ const server = restify.createServer({
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser());
 server.use(restify.plugins.bodyParser());
- 
+ //server.use(restify.CORS());
+//.use(restify.fullResponse());
+
 server.get('/projects', function (req, res, next) {
     (async () => {
         var projects = await getIssuesList.getProjectList();
@@ -31,6 +33,17 @@ server.get('/tickets/:projectID', function (req, res, next) {
         return next();
     })();
 });
+server.post('/:bar',
+  function(req, res, next) {
+    console.log(req.params)
+   // req.someData = 'foo';
+    return next();
+  },
+  function(req, res, next) {
+    res.send(req.params);
+    return next();
+  }
+)
  
 server.listen(process.env.PORT || 8080, function () {
   console.log('%s listening at %s', server.name, server.url);
