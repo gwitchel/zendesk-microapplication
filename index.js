@@ -2,6 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const getIssues = require('./getIssuesFunction')
 const getIssuesList = require('./getIssuesListFunction.js')
+const getAddInfo = require('./getAdditionalInfoFunction.js')
 const http = require('http');
 const url = require('url');
 var restify = require('restify');
@@ -24,11 +25,26 @@ server.get('/projects', function (req, res, next) {
     })();
 });
 server.get('/tickets/:projectID', function (req, res, next) {
-    //res.send(req.params.projectID);
-    //return next();
     (async () => {
+        var swimObject = [];
+        var swimLanes = await getAddInfo.getSwimlanes(req.params.projectID);
+        swimLanes = swimLanes[0].statuses;
         var issues = await getIssues.getIssueInfo(req.params.projectID);
-        res.send(issues)
+        for(var i = 0; i < swimLanes.length; i++){
+          var name = swimLanes[i].name; 
+          var id = swimLanes[i].id; 
+          swimObject.push({  "name" : name, "id" : id })
+        }
+        res.send({"project" : [
+          {
+            'mpid': "foo",
+            'name' : "bar",
+            'key' : 'loo',
+            'Swimlanes' : swimObject,
+            'Issues': issues
+          }
+
+        ]})
         return next();
     })();
 });
