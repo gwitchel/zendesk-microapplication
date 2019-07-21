@@ -27,24 +27,20 @@ server.get('/projects', function (req, res, next) {
 server.get('/tickets/:projectID', function (req, res, next) {
     (async () => {
         var swimObject = [];
-        var swimLanes = await getAddInfo.getSwimlanes(req.params.projectID);
-        swimLanes = swimLanes[0].statuses;
+        var swimLanes = await getAddInfo.getSwimlanes(req.params.projectID); swimLanes = swimLanes[0].statuses;
         var issues = await getIssues.getIssueInfo(req.params.projectID);
+        var projData = await getIssuesList.getProjectByIDMini(req.params.projectID);
         for(var i = 0; i < swimLanes.length; i++){
-          var name = swimLanes[i].name; 
-          var id = swimLanes[i].id; 
+          var name = swimLanes[i].name;  var id = swimLanes[i].id; 
           swimObject.push({  "name" : name, "id" : id })
         }
-        res.send({"project" : [
-          {
-            'mpid': "foo",
-            'name' : "bar",
-            'key' : 'loo',
+        res.send({"project" : [{
+            'mpid': req.params.projectID,
+            'name' : projData.description,
+            'key' : projData.key,
             'Swimlanes' : swimObject,
             'Issues': issues
-          }
-
-        ]})
+          }]})
         return next();
     })();
 });

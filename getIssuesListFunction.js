@@ -27,6 +27,22 @@ exports.getProjectList = async function () {
     })
 };
 
+exports.getProjectByIDMini = async function (id) {
+    var proj; 
+    var options = {
+        method: 'GET',
+        url: 'https://gwitchel@gmail.com:lKxytQXek3QRnejxhXMA32C2@vrtestsite.atlassian.net/rest/api/3/project/' + id
+   };
+    await request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+        proj = JSON.parse(body);
+    });
+    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+    return new Promise(function(resolve, reject) {
+        setTimeout(resolve, 3000)
+        resolve(proj) // successfully fill promise
+    })
+};
   
 exports.getIssueInfo = async function (id,callback) {
     var obj; 
