@@ -3,6 +3,7 @@ const assert = require('assert');
 const getIssues = require('./getIssuesFunction')
 const getIssuesList = require('./getIssuesListFunction.js')
 const getAddInfo = require('./getAdditionalInfoFunction.js')
+const postFunctions = require('./postIssuesFunction.js') 
 const http = require('http');
 const url = require('url');
 var restify = require('restify');
@@ -44,11 +45,14 @@ server.get('/tickets/:projectID', function (req, res, next) {
         return next();
     })();
 });
-server.post('/:bar',
+server.post('/setAssignee/:issueID/:name',
   function(req, res, next) {
-    console.log(req.params)
-   // req.someData = 'foo';
-    return next();
+    (async () => {
+      console.log(req.params)
+      // req.someData = 'foo';
+      postFunctions.setAsigneeName(req.params.issueID,req.params.name);
+       return next();
+    })(); 
   },
   function(req, res, next) {
     res.send(req.params);
