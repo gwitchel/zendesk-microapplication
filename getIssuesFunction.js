@@ -28,7 +28,7 @@ exports.getIssueInfo = async function (board) {
       'priority' : obj.issues[i].fields.priority.name,
       'issueType' :  obj.issues[i].fields.issuetype.name,
       'reporter' : obj.issues[i].fields.reporter.displayName,
-      'swimlane' : {'id' : obj.issues[i].fields.status.id , 'name' :  obj.issues[i].fields.status.name} ,
+      'swimlane' : [{'id' : obj.issues[i].fields.status.id , 'name' :  obj.issues[i].fields.status.name}] ,
     })
   }
   resolve(issues) // successfully fill promise
