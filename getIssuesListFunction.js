@@ -115,4 +115,24 @@ exports.getIssues = async function(){
     })
 }
 
+exports.getIssueMetadata = async function(id){
+    var issue; 
+        var options = {
+            method: 'GET',
+            ///rest/api/2/search?jql=project=ABC&maxResults=1000
+            url: 'https://gwitchel@gmail.com:lKxytQXek3QRnejxhXMA32C2@vrtestsite.atlassian.net/rest/api/3/issue/' + id + '/editmeta'
+        };
+        await request(options, function (error, response, body) {
+            if (error) throw new Error(error);
+            issue = JSON.parse(body);
+            console.log(issue)
+        });
+    
+    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+    return new Promise(function(resolve, reject) {
+        setTimeout(resolve, 3000)
+        resolve(issue) // successfully fill promise
+    })
+}
+
  

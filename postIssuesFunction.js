@@ -3,9 +3,7 @@ const  request = require('request');
 
 exports.setAsigneeName = async function (issueID,name) {
     var bodyData = {
-         "fields": {
-             "assignee":{"name":name}
-         }
+      "update": { "assignee": [ { "set": [ { "name": name } ] } ] }
     };
     var options = {
         method: 'PUT',
@@ -14,7 +12,6 @@ exports.setAsigneeName = async function (issueID,name) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
          },
-         json: true,
          body: bodyData
     };
    

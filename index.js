@@ -25,6 +25,13 @@ server.get('/projects', function (req, res, next) {
         return next();
     })();
 });
+server.get('/metadata/:id', function (req, res, next) {
+  (async () => {
+      var projects = await getIssuesList.getIssueMetadata(req.params.id);
+      res.send({"permissions" : projects})
+      return next();
+  })();
+});
 server.get('/tickets/:projectID', function (req, res, next) {
     (async () => {
         var swimObject = [];
@@ -45,7 +52,7 @@ server.get('/tickets/:projectID', function (req, res, next) {
         return next();
     })();
 });
-server.post('/setAssignee/:issueID/:name',
+server.put('/setAssignee/:issueID/:name',
   function(req, res, next) {
     (async () => {
       console.log(req.params)
