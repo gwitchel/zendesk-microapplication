@@ -12,7 +12,6 @@ exports.getIssueInfo = async function (board) {
  await request(options, function (error, response, body) {
     if (error) throw new Error(error);
     obj =  JSON.parse(body);
-    //console.log(obj.fields.description.content[0].content[0].text);
  });
  
  await new Promise((resolve, reject) => setTimeout(resolve, 3000));
@@ -33,6 +32,5 @@ exports.getIssueInfo = async function (board) {
   }
   resolve(issues) // successfully fill promise
  })
- // return obj;
 };
 

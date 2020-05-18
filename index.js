@@ -77,35 +77,4 @@ const Mongourl = 'mongodb://localhost:27017/testDB';
 // Database Name
 const dbName = 'testDB';
 
-// (async () => {
-// //console.log(await getIssues.getIssueInfo('VRSCRUM-2'));
-// var projects = await getIssuesList.getProjectList();
-// console.log(projects);
-// var issues = await getIssues.getIssueInfo(projects[0].id);
-// console.log(issues);
-// //console.log(await getIssues.getIssueInfo('VRSCRUM-3'));
-// })();
-
-// MongoClient.connect(Mongourl,{ useNewUrlParser: true }, function(err, client) {
-//    assert.equal(null, err);
-//    console.log("Connected successfully to server");
-//    const db = client.db(dbName);
-//    var collection = db.collection('testDB');
-//    //console.log(db.databaseName);
-//    //var dbo = db.db("testDB");
-//    (async () => {    
-//     var projects = await getIssuesList.getProjectList();
-//         var Data = {
-//              projects: undefined, 
-//              description: "oof" };
-//         collection.insertOne(Data, function(err, res) {
-//             if (err) throw err;
-//             console.log("1 document inserted");
-//         });
-//     })();
-//     //db.close();
-
-//  });
-
-
 
