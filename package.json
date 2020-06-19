@@ -17,7 +17,8 @@
     "mongoose": "^5.6.1",
     "request": "^2.88.2",
     "restify-plugins": "^1.6.0",
-    "window-location-origin": "^0.1.0"
+    "window-location-origin": "^0.1.0",
+    "ws": "^7.3.0"
   },
   "devDependencies": {}
 }

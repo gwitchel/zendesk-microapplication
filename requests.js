@@ -1,5 +1,5 @@
 var request = require('request');
-/* example request to get auth token using id and subdomain current auth endpoint is used in publick.js
+// example request to get auth token using id and subdomain current auth endpoint is used in publick.js
 exports.getAuthToken = async function () {
     var proj; 
     var options = {
@@ -15,7 +15,7 @@ exports.getAuthToken = async function () {
         resolve(proj) // successfully fill promise
     })
 };
-*/ 
+
 // actual enpoint to get all chat data for server 
 exports.getAllChats = async function (token) {
     var chats;
@@ -39,4 +39,5 @@ exports.getAllChats = async function (token) {
         resolve(chats) // successfully fill promise
     })
 };
+
 
